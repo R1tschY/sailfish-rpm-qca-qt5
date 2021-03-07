@@ -6,23 +6,23 @@ on:
       - '*'
 
 jobs:
-  build-armv7hl:
-    runs-on: ubuntu-latest
-    name: Build armv7hl
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
+  # build-armv7hl:
+  #   runs-on: ubuntu-latest
+  #   name: Build armv7hl
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       submodules: 'recursive'
 
-    - name: Build armv7hl RPMS
-      uses: R1tschY/sailfish-sdk-action@v1
-      with:
-        arch: 'armv7hl'
-        release: '4.0.1.48'
-        fix-version: false
+  #   - name: Build armv7hl RPMS
+  #     uses: R1tschY/sailfish-sdk-action@v1
+  #     with:
+  #       arch: 'armv7hl'
+  #       release: '4.0.1.48'
+  #       fix-version: false
 
-    - name: Upload RPM
-      run: find ./RPMS -name '*.rpm' | xargs -l echo curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T
+  #   - name: Upload RPM
+  #     run: find ./RPMS -name '*.rpm' | xargs -l echo curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T
 
   build-i486:
     runs-on: ubuntu-latest
@@ -41,3 +41,12 @@ jobs:
 
     - name: Upload RPM
       run: find ./RPMS -name '*.rpm' | xargs -l echo curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T
+
+    - name: Upload RPM
+      run: ls -al ./RPMS
+
+    - name: Upload RPM
+      run: ls -al .
+
+    - name: Upload RPM
+      run: pwd
