@@ -22,7 +22,7 @@ jobs:
         fix-version: false
 
     - name: Upload RPM
-      run: curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T RPM/*
+      run: curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T RPMS/*
 
   build-i486:
     runs-on: ubuntu-latest
@@ -40,4 +40,4 @@ jobs:
         fix-version: false
 
     - name: Upload RPM
-      run: curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T RPM/*
+      run: curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T RPMS/*
