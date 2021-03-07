@@ -9,7 +9,6 @@ BuildRequires:  cmake
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  git
 BuildRequires:  extra-cmake-modules >= 5.68.0
 
 %description
