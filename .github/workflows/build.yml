@@ -1,0 +1,43 @@
+name: RPM build
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build-armv7hl:
+    runs-on: ubuntu-latest
+    name: Build armv7hl
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+
+    - name: Build armv7hl RPMS
+      uses: R1tschY/sailfish-sdk-action@v1
+      with:
+        arch: 'armv7hl'
+        release: '4.0.1.48'
+        fix-version: false
+
+    - name: Upload RPM
+      run: curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T RPM/*
+
+  build-i486:
+    runs-on: ubuntu-latest
+    name: Build i486
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+
+    - name: Build i486 RPMS
+      uses: R1tschY/sailfish-sdk-action@v1
+      with:
+        arch: 'i486'
+        release: '4.0.1.48'
+        fix-version: false
+
+    - name: Upload RPM
+      run: curl -ur1tschy@posteo.de:${RPM_REPO_PASSWORD} -XPUT https://r1tschy.jfrog.io/artifactory/sailfish/ -T RPM/*
