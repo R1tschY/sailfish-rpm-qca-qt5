@@ -18,7 +18,9 @@ Straightforward and cross-platform crypto API, using Qt datatypes and convention
 %autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
-if [ ! -d build ] ; then mkdir build ; fi ; cd build
+mkdir -p build
+cd build
+
 cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=OFF \
@@ -26,11 +28,15 @@ cmake \
     -DBUILD_PLUGINS=ossl \
     -DBUILD_SHARED_LIBS=OFF \
     ..
+    
 %make_build
 
 %install
 cd build
 make install DESTDIR=%{buildroot}
+
+%clean
+rm -rf build
 
 %files
 %defattr(-,root,root,-)
